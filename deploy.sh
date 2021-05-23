@@ -4,7 +4,4 @@ docker push arnav30/microblog:latest
 
 docker push arnav30/microblog:$SHA
 
-kubectl apply -f k8s
-
-
 
