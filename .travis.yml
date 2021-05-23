@@ -6,10 +6,10 @@ services:
 
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker build -t arnav30/microblog:4.0 -f Dockerfile.dev .
+  - docker build -t arnav30/microblog -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true arnav30/microblog:4.0 tests.py &
+  - docker run -e CI=true arnav30/microblog tests.py &
 
 deploy:
   provider: script
