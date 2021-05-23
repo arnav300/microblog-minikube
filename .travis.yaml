@@ -1,14 +1,11 @@
 sudo: required
+language: generic 
+
 services:
   - docker: 
 
 before_install:
-    - docker build -t arnav30/microblog:2.0 -f Dockerfile .
+  - docker build -t arnav30/microblog -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true arnav30/microblog:2.0 tests.py
-
-after_success:
-  - docker build -t arnav30/microblog:2.0 ./
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push arnav30/microblog:latest
+  - docker run -e CI=true arnav30/microblog tests.py
